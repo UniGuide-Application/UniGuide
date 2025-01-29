@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support - UniGuide</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+       
+        .header  {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px; 
+        background-color: #ffffff; 
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0; 
+        width: 100%; 
+        max-width: 600px; 
+        z-index: 1100; 
+        margin: 0 auto; 
+}
+
+        .header img {
+            height: 28px;
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+        }
+
+        .help-container {
+            width: 100%;
+        max-width: 600px;
+        margin-top: 60px; 
+        padding: 20px;
+        background-color:#fff;
+        }
+
+      
+
+        .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000; 
+    margin: 0; 
+}
+
+
+
+        .contact-section {
+    margin-top: 30px;
+}
+
+.contact-section h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    transition: border-color 0.3s ease-in-out; 
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    outline: none; 
+    border-color: #1abc9c; 
+    box-shadow: 0 0 5px rgba(26, 188, 156, 0.5); 
+}
+
+#contact-form button {
+    padding: 12px;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#contact-form button:hover {
+    background-color: #16a085; 
+}
+
+.footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 560px;
+    width: 90%; 
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+
+@media (max-width: 480px) {
+    .footer {
+        font-size: 12px;
+        padding: 15px 30px;
+        width: 100%;
+        position: relative;
+
+        
+    }
+}
+
+.icon-text {
+    display: inline-block; 
+    font-family: 'Arial', sans-serif; 
+    font-weight: bold; 
+    font-size: 24px; 
+    color: #ffffff; 
+    text-align: center; 
+    margin-bottom: 0; 
+    letter-spacing: 1.2px; 
+    text-transform: uppercase; 
+    
+  }
+  
+
+
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: fixed;
+    left: -250px; 
+    top: 0;
+    bottom: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 1210; 
+}
+
+.sidebar.show {
+    left: 0; 
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 80px; 
+}
+
+.sidebar ul li {
+    padding: 12px 10px; 
+    margin-bottom: 15px; 
+    cursor: pointer;
+    background-color: #34495e;
+    border-radius: 20px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+.sidebar ul li:hover {
+    background-color: #1abc9c;
+}
+
+.hamburger {
+    position: fixed; 
+    left: 20px;
+    top: 20px;
+    font-size: 30px;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.sidebar-icon {
+    position: absolute; 
+    left: 20px; 
+    font-size: 30px;
+    color: #000000;
+    cursor: pointer;
+    z-index: 1200;
+    transition: transform 0.3s ease, color 0.3s ease; 
+}
+
+.sidebar-icon:hover {
+    color: #d8d2d2;
+    transform: scale(1.1); 
+}
+
+.sidebar-icon:active {
+    color: #16a085; 
+    transform: scale(0.9); 
+}
+
+
+
+.faq-section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-2px); 
+}
+
+.faq-item.active {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+    transform: translateY(-4px); 
+}
+
+.faq-question {
+    width: 100%;
+    background-color: #ffffff;
+    color: #2c3e50;
+    text-align: left;
+    font-size: 16px;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.faq-question:hover {
+    background-color: #f0f8ff; 
+}
+
+.arrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #2c3e50;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .arrow {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    background-color: #f9f9f9;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #2c3e50;
+    border-top: 1px solid #ddd;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding: 15px;
+}
+
+
+ .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .close-button {
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            color: #888;
+            cursor: pointer;
+            margin-right: -10px;
+        }
+
+        .close-button:hover {
+            color: #333;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .modal-content p {
+            color: #555;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .ok-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .ok-button:hover {
+            background-color: #45a049;
+        }
+
+
+
+
+
+        #darkModeToggle {
+    font-size: 24px;
+    color: #000000;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    right: 20px;
+    z-index: 1200;
+}
+
+
+
+body.dark-mode #darkModeToggle {
+    color: #ff9800;
+}
+
+body.dark-mode {
+    background-color: #181818;
+    color: #ffffff;
+}
+
+body.dark-mode .header {
+    background-color: #202020;
+    color: #ffffff;
+    border-bottom: 1px solid #383838;
+}
+
+body.dark-mode .title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .sidebar-icon {
+    color: #909090;
+}
+
+body.dark-mode .help-container {
+    background-color: #242424;
+    border: 1px solid #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .contact-section h2 {
+    color: #ffffff;
+}
+
+body.dark-mode #contact-form input,
+body.dark-mode #contact-form textarea {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+body.dark-mode #contact-form input:focus,
+body.dark-mode #contact-form textarea:focus {
+    border-color: #1abc9c;
+    box-shadow: 0 0 5px rgba(26, 188, 156, 0.5);
+}
+
+body.dark-mode #contact-form button {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+
+body.dark-mode #contact-form button:hover {
+    background-color: #16a085;
+}
+
+body.dark-mode .footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .faq-section h2 {
+    color: #ffffff;
+}
+
+body.dark-mode .faq-item {
+    background-color: #242424;
+    border: 1px solid #333;
+}
+
+body.dark-mode .faq-item.active {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .faq-question {
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+body.dark-mode .faq-question:hover {
+    background-color: #333;
+}
+
+body.dark-mode .faq-answer {
+    background-color: #3a3a3a;
+    color: #ffffff;
+
+}
+
+body.dark-mode .arrow {
+    border-top-color: #e0e0e0;
+}
+
+body.dark-mode .modal {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .modal-content {
+    background-color: #242424;
+    color: #e0e0e0;
+}
+
+body.dark-mode .close-button {
+    color: #ccc;
+}
+
+body.dark-mode .close-button:hover {
+    color: #ffffff;
+}
+
+body.dark-mode .ok-button {
+    background-color: #1abc9c;
+    color: #ffffff;
+}
+
+body.dark-mode .ok-button:hover {
+    background-color: #16a085;
+}
+
+body.dark-mode .modal-content h2 {
+        color: #ffffff;
+}
+
+
+
+body.dark-mode .sidebar {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .sidebar ul li {
+    background-color: #2a2a2a;
+    color: #cfcfcf;
+}
+
+body.dark-mode .sidebar ul li:hover {
+    background-color: #1abc9c;
+}
+
+body.dark-mode * {
+    transition: all 0.3s ease-in-out;
+}
+
+
+    </style>
+</head>
+<body>
+   
+    
+
+  
+    <div class="help-container">
+        <div class="header">
+            <div class="sidebar-icon" onclick="toggleSidebar()">☰</div>
+            <img src="customer-support.png" alt="UniGuide Logo">
+
+            <div class="title">Help & Support</div>
+            <i id="darkModeToggle" class="fas fa-moon"></i>
+
+
+        </div>
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+
+            </p>
+        
+            <div class="faq-item">
+                <button class="faq-question">
+                    How do I find the shortest route?
+                    <span class="arrow"></span>
+                </button>
+                <div class="faq-answer">
+                    The app uses Dijkstra’s algorithm to determine the shortest path.
+                </div>
+            </div>
+        
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can I access alternative routes?
+                    <span class="arrow"></span>
+                </button>
+                <div class="faq-answer">
+                    Yes, you can choose between the shortest route and a scenic route.
+                </div>
+            </div>
+        
+            <div class="faq-item">
+                <button class="faq-question">
+                    What if my location is not detected?
+                    <span class="arrow"></span>
+                </button>
+                <div class="faq-answer">
+                    Ensure geolocation permissions are enabled in your browser settings.
+                </div>
+            </div>
+        
+            <div class="faq-item">
+                <button class="faq-question">
+                    Is the app available offline?
+                    <span class="arrow"></span>
+                </button>
+                <div class="faq-answer">
+                    Currently, UniGuide requires an active internet connection.
+                </div>
+            </div>
+        </div>
+        
+
+        <section class="contact-section">
+            <h2>Need More Help?</h2>
+            <form id="contact-form" onsubmit="handleSubmit(event)">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="4" placeholder="Describe your issue" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    
+        <div id="customModal" class="modal" style="display:none">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal()">&times;</span>
+                <h2>Thank You!</h2>
+                <p>Thank you for reaching out! We will get back to you soon.</p>
+                <button class="ok-button" onclick="closeModal()">OK</button>
+            </div>
+        </div>
+
+
+<div class="sidebar" id="sidebar">
+    
+    <h1 class="icon-text">UniGuide</h1>
+
+    <ul>
+        <li onclick="navigateToPage('home')">Home</li>
+        <li onclick="navigateToPage('help')">Help & Support</li>
+        <li onclick="navigateToPage('about')">About Us</li>
+    </ul>
+</div>
+
+        
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 UniGuide. All rights reserved.</p>
+        <p>Designed and Developed by UniGuide Team </p>
+    </footer>
+
+    <script>
+
+
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const faqItem = button.parentElement;
+
+            faqItem.classList.toggle('active');
+        });
+    });
+
+
+
+
+
+
+
+    function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const body = document.body;
+
+       if (sidebar.style.left === '0px') {
+        sidebar.style.left = '-250px'; 
+    } else {
+        sidebar.style.left = '0px';     
+    }
+}
+
+
+document.addEventListener('click', function(event) {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarIcon = document.querySelector('.sidebar-icon');
+    
+    if (!sidebar.contains(event.target) && !sidebarIcon.contains(event.target) && sidebar.style.left === '0px') {
+        sidebar.style.left = '-250px';  
+        document.body.style.marginLeft = '0';
+    }
+});
+
+function navigateToPage(page) {
+    setTimeout(function () {
+        if (page === 'home') {
+            window.location.href = 'index.html';
+        } else if (page === 'about') {
+            window.location.href = 'about.html'; 
+        } else if (page === 'help') {
+            window.location.href = 'help.html'; 
+        }
+    }, 500); 
+}
+
+
+
+  function handleSubmit(event) {
+            event.preventDefault(); 
+            openModal(); 
+            event.target.reset(); 
+
+        }
+
+        function openModal() {
+            document.getElementById("customModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("customModal").style.display = "none";
+        }
+
+
+
+        
+
+
+const toggleIcon = document.getElementById("darkModeToggle");
+
+const darkMode = localStorage.getItem("darkMode");
+
+if (darkMode === "enabled") {
+    document.body.classList.add("dark-mode");
+    toggleIcon.classList.remove("fa-moon");
+    toggleIcon.classList.add("fa-sun");
+}
+
+toggleIcon.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        toggleIcon.classList.remove("fa-moon");
+        toggleIcon.classList.add("fa-sun");
+        localStorage.setItem("darkMode", "enabled");
+    } else {
+        toggleIcon.classList.remove("fa-sun");
+        toggleIcon.classList.add("fa-moon");
+        localStorage.setItem("darkMode", "disabled");
+    }
+});
+
+
+
+    </script>
+</body>
+</html>

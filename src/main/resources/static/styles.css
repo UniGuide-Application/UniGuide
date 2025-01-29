@@ -15,6 +15,8 @@ body {
 .container {
     width: 100%;
     max-width: 600px;
+    margin-top: 60px; 
+    padding: 20px;
 }
 
 .search_container {
@@ -34,7 +36,7 @@ body {
     margin-bottom: 20px;
 }
 
-.search_container input {
+/* .search_container input {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
@@ -42,22 +44,51 @@ body {
     border-radius: 5px;
     font-size: 16px;
     outline: none;
+} */
+
+.material-symbols-outlined{
+    vertical-align: top;
+}
+
+body.dark-mode .material-symbols-outlined{
+    color: white;
+}
+
+.search_container input[type="text"], .ipstuff > input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 24px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.search_container input[type="text"]:hover, .ipstuff > input:hover {
+    border-color: #2a2a2a; 
+    box-shadow: 0 0 5px rgba(72, 72, 72, 0.5); 
+}
+
+.search_container input[type="text"]:focus, .ipstuff > input:focus {
+    border-color: #000000; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
 }
 
 .search_container > button {
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #266bf2;
+    background-color: #35af19;
     color: white;
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 16px;
     cursor: pointer;
 }
 
 .search_container > button:hover {
-    background-color: #0077ed;
-    
+    background-color: #35af19;
+    transform: scale(1.01);
 }
 
 .ipstuff {
@@ -80,10 +111,12 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease; 
 }
 
 .ipstuff > button:hover {
     background-color: rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
 }
 
 .ipstuff img {
@@ -91,63 +124,414 @@ body {
     height: 30px;
 }
 
-.quick_access {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.quick_access button {
-    padding: 10px;
-    border: none;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.quick_access button:hover {
-    background-color: #e0e0e0;
-}
-
-#response_container {
-    padding: 20px;
+.quick-access {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth; 
+    -webkit-overflow-scrolling: touch; 
+    white-space: nowrap; 
+    padding: 10px 0;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 10px;
-    display: none;
-    flex-direction: column;
-    border-radius: 5px;
 }
 
-#response_container > p {
-    text-align: center;
-    margin-bottom: 10px;
-}
-  
-  #roominfo {
-    margin: 0 auto;
-    border-radius: 5px;
-    border-spacing: 0;
-    /* border: 1px solid black; */
-    overflow: hidden;
+.quick-access::-webkit-scrollbar {
+    display: none; 
 }
 
-#roominfo th, #roominfo td {
-    padding: 10px;
-    text-align: center;
-    /* border: 1px solid black; */
+.quick-access ul {
+    display: flex; 
+    gap: 15px; 
+    list-style: none; 
+    margin: 0;
+    padding: 0;
 }
 
-#roominfo, #roominfo th, #roominfo td {
-    border-collapse: separate;
-    text-align: center;
+.quick-access li {
+    display: inline-block; 
+    flex-shrink: 0;
+}
+
+.quick-access button {
+    background-color: #4285f4; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px; 
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s, background-color 0.3s;
+    margin: 0px 0.5px;
+}
+
+.quick-access button:hover {
+    background-color: #3367d6; 
+    transform: scale(1.05); 
+}
+
+.quick-access button:active {
+    background-color: #2851a3; 
+    transform: scale(0.95); 
+}
+.quick-access button:focus {
+    outline: none; 
+    background-color: #3367d6; 
+    transform: scale(0.95); 
+}
+
+@media (max-width: 768px) {
+    .quick-access button {
+        padding: 8px 12px; 
+        font-size: 12px; 
+        transform: scale(0.95); 
+
+    }
+}
+@media (max-width: 768px) {
+    .quick-access ul {
+        gap: 10px;
+        transform: scale(0.95); 
+
+
+    }
 }
 
 #map { 
     height: 420px; /* temp, would change in future */
     margin-top: 10px;
     border-radius: 5px;
+}
+
+  
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: fixed;
+    left: -250px; 
+    top: 0;
+    bottom: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 10010; 
+}
+
+.sidebar.show {
+    left: 0; 
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 60px; 
+}
+
+.sidebar ul li {
+    padding: 12px 10px; 
+    margin-bottom: 15px; 
+    cursor: pointer;
+    background-color: #34495e;
+    border-radius: 20px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li:hover {
+    background-color: #1abc9c;
+}
+
+.icon-text {
+    display: inline-block; 
+    font-family: 'Arial', sans-serif; 
+    font-weight: bold; 
+    font-size: 24px; 
+    color: #ffffff; 
+    text-align: center; 
+    margin-bottom: 0; 
+    letter-spacing: 1.2px; 
+    text-transform: uppercase; 
+    
+  }
+.hamburger {
+    position: fixed; 
+    left: 20px;
+    top: 20px;
+    font-size: 30px;
+    color: #ffffff;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+
+.sidebar-icon {
+    position: absolute; 
+    left: 20px; 
+    font-size: 30px;
+    color: #000000;
+    cursor: pointer;
+    z-index: 1200;
+    transition: transform 0.3s ease, color 0.3s ease; 
+}
+
+
+.sidebar-icon:hover {
+    color: #d8d2d2; 
+    transform: scale(1.1); 
+}
+
+.sidebar-icon:active {
+    color: #16a085; 
+    transform: scale(0.9); 
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #000000; 
+    margin: 0; 
+}
+
+.header {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    padding: 10px 20px; 
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0; 
+    width: 100%; 
+    max-width: 560px; 
+    z-index: 1100; 
+    margin: 0 auto;
+}
+
+.header img {
+    height: 28px;
+    margin-right: 10px;
+}
+
+.footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 14px;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 560px;
+    width: 90%; 
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.welcome-text {
+    font-size: 3.5rem;
+    font-weight: bold;
+    background-image: linear-gradient(45deg, #ff6e7f, #bfe9ff);
+    background-size: 200% 200%;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: gradient-animation 5s ease-in-out infinite, fade-in 2s ease-out;
+    text-align: center;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#main-content {
+    display: none;
+}
+#loading-bar-container {
+    width: 100%;
+    height: 5px;
+    background-color: #ecf0f1; 
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#loading-bar {
+    height: 100%;
+    width: 0%; 
+    background-color: #82dbb8; 
+    animation: loading 1s linear forwards; 
+}
+
+
+@keyframes loading {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+
+
+#darkModeToggle {
+    font-size: 24px; 
+    color: #000000; 
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    right: 20px;
+    z-index: 1200;
+}
+
+body.dark-mode #darkModeToggle {
+    color: #ff9800; 
+}
+
+body.dark-mode {
+    background-color: #181818; 
+    color: #ffffff; 
+}
+
+body.dark-mode .header {
+    background-color: #202020; 
+    color: #ffffff;
+    border-bottom: 1px solid #383838;
+}
+
+body.dark-mode .title,
+body.dark-mode h1,
+body.dark-mode p {
+    color: #e0e0e0; 
+}
+
+body.dark-mode .sidebar-icon {
+    color: #909090; 
+}
+
+body.dark-mode .search_container {
+    background-color: #282828;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
+}
+
+body.dark-mode .search_container h1 {
+    color: #ffffff; 
+}
+
+body.dark-mode .search_container input {
+    background-color: #121212; 
+    color: #ffffff; 
+    border: 1px solid #333333;
+}
+
+body.dark-mode .search_container > button {
+    background-color: #266bf2; 
+    color: #ffffff; 
+}
+
+body.dark-mode .search_container > button:hover {
+    background-color: #0077ed; 
+}
+
+body.dark-mode .quick-access {
+    background-color: #282828; 
+    /* border-bottom: 1px solid #383838;  */
+}
+
+body.dark-mode .quick-access ul {
+    gap: 15px; 
+}
+
+body.dark-mode .quick-access button {
+    background-color: #333333; 
+    color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .quick-access button:hover {
+    background-color: #444444;
+    transform: scale(1.05);
+}
+
+body.dark-mode .quick-access button:active {
+    background-color: #555555;
+    transform: scale(0.95);
+}
+
+body.dark-mode .quick-access button:focus {
+    outline: none;
+    background-color: #444444;
+    transform: scale(1.05);
+}
+
+body.dark-mode #roominfo th,
+body.dark-mode #roominfo td {
+    background-color: #282828;
+    color: #e0e0e0;
+}
+
+body.dark-mode #map {
+    background-color: #333333;
+}
+
+body.dark-mode .sidebar {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .sidebar ul li {
+    background-color: #2a2a2a;
+    color: #cfcfcf;
+}
+
+body.dark-mode .sidebar ul li:hover {
+    background-color: #1abc9c;
+}
+
+* {
+    transition: all 0.4s ease;
 }

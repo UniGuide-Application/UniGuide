@@ -70,6 +70,8 @@ public class NodeInfo {
         coord_nodes.put("block 1 intersection", new int[] {50});
         coord_nodes.put("block 2 intersection", new int[] {13});
         coord_nodes.put("block 3 intersection", new int[] {13});
+        coord_nodes.put("atms", new int[] {5,9,10});
+        coord_nodes.put("team orange", new int[] {42});
         return coord_nodes;
     }
     
